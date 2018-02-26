@@ -1,0 +1,17 @@
+version: '3'
+services:
+  pmp-scrapy:
+    build: .
+    environment:
+      - 'MONGO_URI=mongodb://pmp-be-mongodb:27017/'
+      - 'MONGO_DATABASE=pmp'
+    ports:
+      - '6800:6800'
+  pmp-be-mongodb:
+    image: mongo:latest
+    ports: 
+      - '27017:27017'
+    volumes:
+      - mongodata:/data/db
+volumes:
+  mongodata:
